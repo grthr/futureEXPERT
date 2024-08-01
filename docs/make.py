@@ -14,7 +14,7 @@ from functools import cached_property
 from types import TracebackType
 from typing import Generator, List, Optional, Sequence, Type, get_type_hints
 
-import apollon
+import futureexpert
 
 # TODO APO-760: refine API doc type hint link generation.
 
@@ -72,7 +72,7 @@ def module_paths(package_dir) -> Generator[str, None, None]:
     -------
         Generator providing paths of all python package modules.
     """
-    for subdir, dirs, files in os.walk(os.path.join(package_dir, 'apollon')):
+    for subdir, dirs, files in os.walk(os.path.join(package_dir, 'futureexpert')):
         for file in files:
             filepath = subdir + os.sep + file
 
@@ -118,10 +118,10 @@ class DocstringRefiner:
         """Refine docstrings of module."""
 
         # Reconstruct module path from file path, to import module and extract type hints.
-        module_dot_path = re.sub(r'.*(apollon/.*).py', r'\g<1>', self.module_path).replace('/', '.')
+        module_dot_path = re.sub(r'.*(futureexpert/.*).py', r'\g<1>', self.module_path).replace('/', '.')
 
         # Import module itself.
-        module = importlib.import_module(module_dot_path, package='apollon')
+        module = importlib.import_module(module_dot_path, package='futureexpert')
 
         for doc in self.docstrings:
 
@@ -212,11 +212,11 @@ class TmpDirectoryManager(object):
 
 def main(argv: Optional[Sequence[str]] = None):
 
-    apollon_dir = os.path.dirname(os.path.dirname(inspect.getfile(apollon)))
+    futureexpert_dir = os.path.dirname(os.path.dirname(inspect.getfile(futureexpert)))
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--application-directory', default=apollon_dir)
-    parser.add_argument('--export-directory', default='/workspaces/apollon/public')
+    parser.add_argument('--application-directory', default=futureexpert_dir)
+    parser.add_argument('--export-directory', default='/workspaces/futureexpert/public')
     args, _ = parser.parse_known_args(argv)
 
     application_directory = args.application_directory
@@ -234,7 +234,7 @@ def main(argv: Optional[Sequence[str]] = None):
             refiner.write()
 
         # Generate API docs with pdoc.
-        command = f'pdoc --force --html -o {export_directory} {os.path.join(tmp_manager.tmp_directory, "apollon")}'
+        command = f'pdoc --force --html -o {export_directory} {os.path.join(tmp_manager.tmp_directory, "futureexpert")}'
         os.system(command)
 
 
