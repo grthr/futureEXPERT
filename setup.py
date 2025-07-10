@@ -18,15 +18,15 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version=about['__version__'],
 
-    description='TODO',
-    long_description='TODO',
+    description='Forecasting has never been easier.',
+    long_description='futureEXPERT offers high-quality forecasts for data experts with ease, providing a complete workflow from data preparation to final forecast generation. It is configured with best-practice defaults for immediate use.',
 
     # The project's main homepage.
-    url='https://git.prognostica.de/prognostica/future/futureapp/expert-api',
+    url='https://github.com/discovertomorrow/futureexpert',
 
     # Author details
     author='prognostica GmbH',
-    author_email='info@prognostica.de',
+    author_email='support@future-forecasting.de',
 
     license='proprietary and confidential',
 
