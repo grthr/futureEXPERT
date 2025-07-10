@@ -48,7 +48,7 @@ jobs:
   # It only runs after the 'build' job has successfully completed.
   publish:
     name: Publish package to PyPI
-    needs: build_python
+    needs: build
     runs-on: ubuntu-latest
 
     # --- Permissions ---
